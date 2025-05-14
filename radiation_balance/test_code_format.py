@@ -3,7 +3,6 @@ Classes: Procesy transportu w środowisku"""
 
 import pytest
 import nbformat
-from pyasn1.debug import scope
 
 PLOT=False
 
