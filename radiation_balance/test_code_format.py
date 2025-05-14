@@ -3,6 +3,7 @@ Classes: Procesy transportu w środowisku"""
 
 import pytest
 import nbformat
+from pyasn1.debug import scope
 
 PLOT=False
 
@@ -56,3 +57,16 @@ class TestCodeFormat:
                     for output in cell.outputs:
                         if output.output_type == "display_data":
                             assert 'for' not in cell.source
+
+    @staticmethod
+    def test_if_plot_present(notebook_filename):
+        """check if at least one plot is generated inside notebook"""
+        numer_of_plots = 0
+        with open(notebook_filename, encoding="utf8") as notebook_file:
+            notebook = nbformat.read(notebook_file, nbformat.NO_CONVERT)
+            for cell in notebook.cells:
+                if cell.cell_type == "code":
+                    for output in cell.outputs:
+                        if output.output_type == "display_data":
+                            numer_of_plots += 1
+        assert numer_of_plots > 0
