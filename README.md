@@ -1,3 +1,6 @@
+# Modelowanie procesów transportu w środowisku - zajęcia laboratoryjne w sem. zimowym 2026/2027
+Zachęcam do zapoznania się z materiałami z folderu `introduction` oraz `brownian-motion`.
+
 # Procesy transportu w środowisku - zajęcia labolatoryjne w sem. letnim 2024/2025
 Zamieszczane są tu informacje nt. raportów oraz przykłady w języku Python.
 
