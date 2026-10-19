@@ -1,6 +1,13 @@
 # Modelowanie procesów transportu w środowisku - zajęcia laboratoryjne w sem. zimowym 2026/2027
 Zachęcam do zapoznania się z materiałami z folderu `introduction` oraz `brownian-motion`.
 
+Zasady raportów w pliku o tej samej nazwie: https://github.com/AgnieszkaZaba/Procesy-transportu/blob/main/zasady-raportow.pdf
+
+Porady dotyczące użycia [Quarto](https://quarto.org): https://github.com/AgnieszkaZaba/Procesy-transportu/blob/main/tips-quarto.md
+
+
+
+
 # Procesy transportu w środowisku - zajęcia labolatoryjne w sem. letnim 2024/2025
 Zamieszczane są tu informacje nt. raportów oraz przykłady w języku Python.
 
