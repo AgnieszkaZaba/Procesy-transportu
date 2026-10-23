@@ -228,7 +228,7 @@ $s_Q=\sqrt{\frac{1}{N-1}\sum_{j=1}^{N}(Q^j-\mu_Q)^2}$
 
 ---
 
-# Cwiczenie 4. Modelowanie transportu zanieczyszczenia w rzece (Crank–Nicholson lub QUICKEST)
+# Ćwiczenie 4. Modelowanie transportu zanieczyszczenia w rzece (Crank–Nicholson lub QUICKEST)
 Celem ćwiczenia jest numeryczne modelowanie transportu znacznika w rzece z
   wykorzystaniem równania adwekcyjno-dyspersyjnego. 
 Student powinien umieć zaimplementować wybraną metodę numeryczną, 
@@ -249,7 +249,7 @@ gdzie:
 1. Warunki brzegowe
 
    - **Górny brzeg obszaru symulacji** --- warunek Dirichleta $c(0,t)=0$
-   - **Dolny brzeg obszaru symulacji** --- jest w istocie warunkiem Dirichleta $c(L,t)=0$
+   - **Dolny brzeg obszaru symulacji** --- warunek Dirichleta $c(L,t)=0$
 
     Znacznik nie dociera do dolnego brzegu symulowanego obszaru,
       ale nie możemy z góry założyć, że warunek będzie spełniony dla wybranego $L$. 
@@ -261,12 +261,12 @@ gdzie:
 
 2. Warunki początkowe
 $$
- c(1,j)=c_{\mathrm{in}}
+ c(0,j)=c_{\mathrm{in}}
  \quad \text{dla} \quad j=\frac{l_{\mathrm{in}}}{\Delta x}+1 ,
 $$
 
     $$
-    c(1,j)=0 \quad \text{dla} \quad
+    c(0,j)=0 \quad \text{dla} \quad
     j\neq\frac{l_{\mathrm{in}}}{\Delta x}+1
     $$
 
@@ -286,11 +286,6 @@ $$
 | $D$                | 1 m²/s | Współczynnik dyspersji |
 | $m$                | 10 kg | Całkowita masa zanieczyszczenia |
 
-Całkowita długość obszaru obliczeniowego wynosi:
-
-$$
-L=L_{\mathrm{in}}+L_{\mathrm{out}}=2110\ \mathrm{m}.
-$$
 
 ### Rozwiązanie RAD metodą QUICKEST
 W metodzie QUICKEST stężenie w kolejnym kroku czasowym obliczamy ze wzoru:
