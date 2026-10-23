@@ -1,0 +1,340 @@
+---
+title: "Modelowanie Procesów Transportu w Środowisku"
+subtitle: "Ćwiczenia laboratoryjne"
+lang: pl
+format: pdf
+keep-tex: true
+
+---
+
+# Ćwiczenie 1. Od błądzenia przypadkowego do transportu zanieczyszczeń w środowisku
+
+Celem ćwiczenia jest opanowanie podstaw matematycznego opisu procesów transportu materii w środowisku
+oraz zrozumienie założeń, interpretacji i zastosowań wybranych modeli poprzez analizę
+i rozwiązywanie przykładowych problemów.
+
+Ćwiczenie polega na symulacji ruchu pojedynczych cząstek lub ich zespołów
+poprzez realizację ciągów skoków wykonywanych w stałych ($\Delta t$)
+ lub zmiennych ($\Delta t_n$) odstępach czasu.
+Przyrosty przemieszczenia oznaczamy jako $\Delta x_n$ i losujemy
+ z zadanych rozkładów prawdopodobieństwa.
+
+Położenie cząstki ($x_{n+1}$) w kolejnych chwilach czasu ($t_{n+1}$) wyznaczamy jako:
+$$ t_{n+1}=t_n+\Delta t_n,$$
+$$x_{n+1}=x_n+\Delta x_n.$$
+
+Dla stałych przyrostów czasu mamy: $t_n=n\Delta t.$
+
+Wszystkie cząstki rozpoczynają ruch w punkcie: $x_0=0, y_0=0$.
+Symulacje prowadzimy w $M$ krokach czasowych dla $N$ cząstek.
+
+## Błądzenie przypadkowe (*Random Walk*) dla jednej cząstki
+
+### Zadanie: symulacja ruchu w jednym wymiarze
+
+Przeprowadź symulację ruchu jednej cząstki dla regularnych przyrostów czasu
+  $\Delta t$ i przyrostów położenia losowanych z następujących rozkładów.
+
+
+- **Rozkład Bernoulliego**
+$$
+\Delta x_n=
+\begin{cases}
+-l, & p=\frac{1}{2},\\
++l, & p=\frac{1}{2}.
+\end{cases}
+$$
+
+- **Rozkład jednostajny**
+$$\Delta x_n\sim U(-l,l)$$
+
+- **Rozkład normalny**
+$$\Delta x_n\sim\mathcal{N}(0,\sigma^2)
+$$
+
+- Opcjonalnie przeprowadź symulację dla innych rozkładów
+o średniej zero i skończonej wariancji, np. rozkładu Laplace’a.
+
+
+Dla każdego przypadku:
+- Wygeneruj trajektorię cząstki.
+- Przedstaw położenie cząstki w funkcji czasu.
+- Porównaj otrzymane trajektorie.
+- Zinterpretuj wpływ rozkładu przyrostów na ruch cząstki.
+
+### Zadanie: Błądzenie przypadkowe w dwóch wymiarach
+
+Powtórz symulacje w dwóch wymiarach przestrzennych.
+Zwizualizuj i porównaj trajektorie na płaszczyźnie $(x,y)$.
+
+### Zadanie: Rozkład końcowych położeń cząstek
+Powtórz symulacje w jednym wymiarze dla $M\in\{10^2,10^3,10^4\}$
+oraz $N\in\{10^2,10^4\}$.
+Narysuj histogramy końcowych położeń dla wszystkich
+sześciu kombinacji parametrów $M$ i $N$.
+Sprawdź zgodność otrzymanych rozkładów z rozkładem normalnym.
+
+### Zadanie: Średnie położenie i wariancja populacji cząstek
+Dla rozkładów przyrostów wyznacz średnie położenie
+po $n\in\{1,\ldots,1000\}$ krokach czasowych:
+$$
+\overline{x}(n)=\frac{1}{N}\sum_{i=1}^{N}x_n^i,
+$$
+oraz wariancję:
+$$
+\sigma_x^2(n)=
+\frac{1}{N}\sum_{i=1}^{N}
+\left(x_n^i-\overline{x}(n)\right)^2.
+$$
+
+# Ćwiczenie 2. Od błądzenia przypadkowego do adwekcji-dyfuzji zanieczyszczeń
+Celem ćwiczenia jest zrozumienie mechanizmu adwekcji
+i jego wpływu na transport oraz rozprzestrzenianie się
+substancji w środowisku.
+
+Student powinien umieć:
+- Rozróżniać adwekcję i dyfuzję.
+- Rozszerzyć algorytm błądzenia przypadkowego o średnie
+przemieszczenie związane z prędkością przepływu.
+- Analizować wpływ prędkości adwekcji $u$ i współczynnika
+dyfuzji $D$.
+- Porównywać symulację cząstkową z rozwiązaniem równania
+adwekcji-dyfuzji.
+- Interpretować ruch środka masy chmury oraz zmianę wariancji.
+
+Wprowadzenie adwekcji polega na dodaniu składnika
+deterministycznego:
+$$
+{x_{n+1}=x_n+u\Delta t+\xi_n}
+$$
+gdzie:
+- $x_n$ — położenie cząstki w chwili $t_n$;
+- $u$ — stała prędkość adwekcji;
+- $\Delta t$ — krok czasowy;
+- $\xi_n$ — losowy przyrost położenia związany z dyfuzją.
+
+Przyrosty losowe są niezależne i spełniają warunki:
+$$\mathbb{E}[\xi_n]=0,$$
+$$
+\operatorname{Var}(\xi_n)=2D\Delta t.
+$$
+Przyjmujemy rozkład normalny:
+$$
+\xi_n\sim\mathcal{N}(0,2D\Delta t).
+$$
+
+Adwekcja przesuwa średnie położenie chmury cząstek,
+natomiast dyfuzja zwiększa rozrzut ich położeń.
+
+### Równanie adwekcji-dyfuzji
+Makroskopowy opis transportu przy stałej prędkości przepływu
+i stałym współczynniku dyfuzji przedstawia równanie:
+$$
+\frac{\partial C}{\partial t} + u\frac{\partial C}{\partial x} =D\frac{\partial^2 C}{\partial x^2},
+$$
+gdzie:
+- $C(x,t)$ --- stężenie substancji,
+- $u$ --- prędkość adwekcji,
+- $D$ --- współczynnik dyfuzji.
+
+### Zadanie: Wprowadzenie adwekcji do modelu cząstkowego
+Rozważ transport cząstek rozpoczynających ruch w punkcie $x_0=0$.
+Wykonaj symulacje dla, np.: $N=10^4,M=1000.$
+Przykładowe parametry do symulacji:
+
+| Parametr | Wartość |
+|:--|--:|
+| Krok czasowy $\Delta t$ | $1\ \mathrm{s}$ |
+| Współczynnik dyfuzji $D$ | $0{,}5\ \mathrm{m^2/s}$ |
+| Prędkość adwekcji $u$ | $0;\ 0{,}1;\ 0{,}5;\ 1\ \mathrm{m/s}$ |
+
+Dla każdej wartości $u$:
+1. Wygeneruj trajektorie cząstek.
+2. Narysuj położenie wybranych cząstek w funkcji czasu.
+3. Porównaj rozkłady położeń dla różnych chwil czasu.
+
+### Zadanie: Średnie położenie i wariancja populacji cząstek
+Dla każdego kroku czasowego wyznacz średnie położenie oraz wariancję:
+
+$$
+\mathbb{E}[x(t)]=ut,
+$$
+
+$$
+\operatorname{Var}[x(t)]=2Dt.
+$$
+Porównaj z wartościami teoretycznymi, zbadaj liniowość otrzymanych rezultatów.
+
+### Zadanie: Rozkład położeń cząstek a rozwiązanie analityczne
+Porównaj wynik symulacji z rozwiązaniem analitycznym
+Dla początkowego rozkładu punktowego $C(x,0)=\delta(x)$
+rozwiązanie równania adwekcji-dyfuzji wynosi:
+
+$$
+C(x,t)= \frac{1}{\sqrt{4\pi Dt}}  \exp\left(-\frac{(x-ut)^2}{4Dt}\right).
+$$
+
+---
+
+# Ćwiczenie 3. Analiza wyników testu znacznikowego w rzece
+Do rzeki wlano wodny roztwór $m = 10$ kg KBr. 
+  Próbki wody pobierano z rzeki w odległości $x = 2000 m$ poniżej miejsca iniekcji 
+(wprowadzenia) znacznika.
+Załączone dane przedstawiają stężenia znacznika (jonu Br-) $C_i$ dla kolejnych próbek
+  wody pobranych w chwilach $t_i$.
+
+### Zadanie: wykreślenie krzywej przejścia 
+Należy narysować krzywą przejścia znacznika (BTC -- breakthrough curve), 
+  czyli zależność $C_i = C(t_i)$, a następnie wyliczyć momenty tej krzywej, $M_k$, dla $k=0, 1, 2$.
+Do całkowania określonej dyskretnie funkcji $C(t_i)$ zastosować metodę trapezów.
+
+$$
+M_k = \int_0^\infty t^k C(t)\,dt.
+$$
+
+### Zadanie: wyznaczenie wielkości charakteryzujących krzywą przejścia
+- Natężenie przepływu wody w rzece (Q) [m³/s]
+$$
+Q=\frac{m_{\mathrm{Br}^-}}{M_0}
+$$
+
+- Średni czas przejścia znacznika $(\bar{t})$ [s]
+$$
+\bar{t}=\frac{M_1}{M_0}
+$$
+
+- Wariancja czasu przejścia znacznika $(\sigma_t^2)$ [s²]
+$$\sigma_t^2=\frac{M_2}{M_0}-\left(\frac{M_1}{M_0}\right)^2$$
+
+### Zadanie: określenie wpływu niepewności analitycznych na niepewność charakterystyk krzywej przejścia
+Stężenia jonu bromkowego określono ze względną niepewnością 5%. 
+Celem tej części ćwiczenia jest sprawdzenie, 
+ jak te niepewności propagują się do charakterystyk wyznaczonych w poprzedniej części.
+Stosujemy do tego metodę Monte Carlo, generując $$N=10^4$$ krzywych przejścia:
+
+$$
+C_i^j \sim \mathcal{N}\left(C_i,(0{,}05C_i)^2\right).
+$$
+
+Dla każdej z $N$ otrzymanych w ten sposób krzywych przejścia wyznaczamy $Q$, 
+  $\bar{t}$, $\sigma_t^2$, 
+  a następnie dla otrzymanych rozkładów tych wielkości wyznaczamy 
+wartości średnie i odchylenia standardowe, np. dla $Q$:
+
+**Wartość średnia:** $\mu_Q=\frac{1}{N}\sum_{j=1}^{N}Q^j$
+
+**Odchylenie standardowe:** 
+$s_Q=\sqrt{\frac{1}{N-1}\sum_{j=1}^{N}(Q^j-\mu_Q)^2}$
+
+---
+
+# Cwiczenie 4. Modelowanie transportu zanieczyszczenia w rzece (Crank–Nicholson lub QUICKEST)
+Celem ćwiczenia jest numeryczne modelowanie transportu znacznika w rzece z
+  wykorzystaniem równania adwekcyjno-dyspersyjnego. 
+Student powinien umieć zaimplementować wybraną metodę numeryczną, 
+  ocenić wpływ dyskretyzacji na otrzymane rozwiązanie oraz porównać wyniki symulacji
+  z danymi pomiarowymi. 
+
+### Równanie adwekcyjno-dyspersyjne (RAD)
+
+$$
+\frac{\partial c}{\partial t}  +U\frac{\partial c}{\partial x}  -D\frac{\partial^2 c}{\partial x^2}=0
+$$
+gdzie:
+
+- $c$ – stężenie zanieczyszczenia w wodzie [kg/m³],
+- $U$ – prędkość wody [m/s],
+- $D$ – współczynnik dyspersji [m²/s].
+
+1. Warunki brzegowe
+
+   - **Górny brzeg obszaru symulacji** --- warunek Dirichleta $c(0,t)=0$
+   - **Dolny brzeg obszaru symulacji** --- jest w istocie warunkiem Dirichleta $c(L,t)=0$
+
+    Znacznik nie dociera do dolnego brzegu symulowanego obszaru,
+      ale nie możemy z góry założyć, że warunek będzie spełniony dla wybranego $L$. 
+    Stosujemy więc zabieg polegający na ustawieniu dolnego brzegu na tyle daleko, 
+      że zanieczyszczenie nie osiągnie go w trakcie trwania symulacji.
+    Wielkość $L$ ustalamy więc dynamicznie, chociaż może się zdarzyć, 
+     że wybrana początkowo wartość będzie odpowiednio duża i nie zajdzie
+     potrzeba rozszerzania obszaru symulacji.
+
+2. Warunki początkowe
+$$
+ c(1,j)=c_{\mathrm{in}}
+ \quad \text{dla} \quad j=\frac{l_{\mathrm{in}}}{\Delta x}+1 ,
+$$
+
+    $$
+    c(1,j)=0 \quad \text{dla} \quad
+    j\neq\frac{l_{\mathrm{in}}}{\Delta x}+1
+    $$
+
+    Stężenie początkowe wynosi $c_{\mathrm{in}}=\frac{m}{A\cdot\Delta x}$, gdzie:
+   - $m$ --- całkowita masa zanieczyszczenia,
+   - $A$ --- pole przekroju poprzecznego kanału,
+   - $\Delta x$ --- krok przestrzenny.
+
+3.  Wartości parametrów
+
+| Parametr           | Wartość | Opis |
+|--------------------|---:|---|
+| $L_{\mathrm{in}}$  | 10 m | Odległość punktu iniekcji |
+| $L_{\mathrm{out}}$ | 2100 m | Długość obszaru za punktem iniekcji |
+| $A$                | 10 m² | Pole przekroju poprzecznego kanału |
+| $U$                | 0,1 m/s | Prędkość wody |
+| $D$                | 1 m²/s | Współczynnik dyspersji |
+| $m$                | 10 kg | Całkowita masa zanieczyszczenia |
+
+Całkowita długość obszaru obliczeniowego wynosi:
+
+$$
+L=L_{\mathrm{in}}+L_{\mathrm{out}}=2110\ \mathrm{m}.
+$$
+
+### Rozwiązanie RAD metodą QUICKEST
+W metodzie QUICKEST stężenie w kolejnym kroku czasowym obliczamy ze wzoru:
+$$
+\begin{aligned}
+    c_j^{n+1}=c_j^n &+\left[C_d(1-C_a)-\frac{C_a}{6} (C_a^2-3C_a+2)\right]c_{j+1}^n\\
+                    &-\left[C_d(2-3C_a)-\frac{C_a}{2}(C_a^2-2C_a-1)\right]c_j^n\\
+                    &+\left[C_d(1-3C_a)-\frac{C_a}{2}(C_a^2-C_a-2)\right]c_{j-1}^n\\
+                    &+\left[C_dC_a+\frac{C_a}{6}(C_a^2-1)\right]c_{j-2}^n
+\end{aligned}
+$$
+
+gdzie:
+
+$$
+C_a=\frac{U\Delta t}{\Delta x}: \quad \text{ adwekcyjna liczba Couranta,}
+$$
+$$
+C_d=\frac{D\Delta t}{(\Delta x)^2}: \quad \text{ dyfuzyjna liczba Couranta.}
+$$
+
+### Zadanie: porównanie symulacji z danymi pomiarowymi
+
+1. Zaimplementuj metodę QUICKEST i przeprowadź symulację transportu znacznika w rzece dla podanych parametrów.
+2. Dobierz krok przestrzenny $\Delta x$ oraz krok czasowy $\Delta t$. Sprawdź warunek Couranta–Friedrichsa–Lewy’ego (CFL) oraz ograniczenia stabilności zastosowanego schematu numerycznego.
+3. Wykonaj symulacje dla wybranych wartości $\Delta t$, zarówno spełniających, jak i naruszających przyjęte warunki stabilności. Porównaj profile stężenia i oceń stabilność wyników.
+4. Wyznacz krzywą przejścia znacznika w punkcie pomiarowym $x_n$. Punkt pomiarowy znajduje się 2000 m poniżej miejsca iniekcji, czyli:
+
+   $$
+   x_n=L_{\mathrm{in}}+2000\ \mathrm{m}=2010\ \mathrm{m}.
+   $$
+
+5. Porównaj symulowaną krzywą przejścia z danymi pomiarowymi. W razie potrzeby interpoluj stężenia symulowane do chwil wykonania pomiarów.
+6. Oblicz błędy symulacji, wykorzystując średni błąd bezwzględny (MAE) oraz pierwiastek z błędu średniokwadratowego (RMSE).
+7. Przedstaw na wykresie krzywe przejścia uzyskane z symulacji i pomiarów.
+8. Sformułuj wnioski dotyczące wpływu kroku przestrzennego i czasowego na stabilność oraz dokładność rozwiązania.
+
+### Zadanie: analiza zbieżności rozwiązania.
+Wykonaj symulacje metodą QUICKEST dla kolejno zagęszczanych siatek przestrzennych,
+np. $\Delta x \in \{20, 10, 5, 2{,}5\}\ \mathrm{m}$,
+odpowiednio dobierając krok czasowy $\Delta t$ i kontrolując stabilność numeryczną.
+Porównaj otrzymane krzywe przejścia znacznika, oblicz błędy RMSE względem rozwiązania
+na najgęstszej siatce i przedstaw zależność błędu od $\Delta x$. 
+Oceń zbieżność rozwiązania oraz wpływ zagęszczania siatki na dokładność i koszt obliczeń.
+
+
+[//]: # (- Inkrementy opisane rozkładem stabilnym &#40;prowadzi do 1D fractional ADE&#41;.)
