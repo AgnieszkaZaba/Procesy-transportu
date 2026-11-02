@@ -291,10 +291,10 @@ $$
 W metodzie QUICKEST stężenie w kolejnym kroku czasowym obliczamy ze wzoru:
 $$
 \begin{aligned}
-    c_j^{n+1}=c_j^n &+\left[C_d(1-C_a)-\frac{C_a}{6} (C_a^2-3C_a+2)\right]c_{j+1}^n\\
-                    &-\left[C_d(2-3C_a)-\frac{C_a}{2}(C_a^2-2C_a-1)\right]c_j^n\\
+    c_j^{n+1}= &\left[C_d(1-C_a)-\frac{C_a}{6} (C_a^2-3C_a+2)\right]c_{j+1}^n\\
+                    &+\left[1 - C_d(2-3C_a)+\frac{C_a}{2}(C_a^2-2C_a-1)\right]c_j^n\\
                     &+\left[C_d(1-3C_a)-\frac{C_a}{2}(C_a^2-C_a-2)\right]c_{j-1}^n\\
-                    &+\left[C_dC_a+\frac{C_a}{6}(C_a^2-1)\right]c_{j-2}^n
+                    &+C_a\left[C_d+\frac{1}{6}(C_a^2-1)\right]c_{j-2}^n
 \end{aligned}
 $$
 
