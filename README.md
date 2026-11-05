@@ -1,6 +1,8 @@
 # Modelowanie procesów transportu w środowisku - zajęcia laboratoryjne w sem. zimowym 2026/2027
 Zachęcam do zapoznania się z materiałami z folderu `introduction` oraz `brownian-motion`.
 
+Pint: Analiza wymiarowa [PySDM/tutorial](https://github.com/open-atmos/PySDM/blob/main/examples/PySDM_examples/tutorials/dimensional_analysis.ipynb)
+
 Zasady raportów w pliku o tej samej nazwie: https://github.com/AgnieszkaZaba/Procesy-transportu/blob/main/zasady-raportow.pdf
 
 Porady dotyczące użycia [Quarto](https://quarto.org): https://github.com/AgnieszkaZaba/Procesy-transportu/blob/main/tips-quarto.md
