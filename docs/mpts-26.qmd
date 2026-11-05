@@ -246,10 +246,8 @@ gdzie:
 - $U$ – prędkość wody [m/s],
 - $D$ – współczynnik dyspersji [m²/s].
 
-1. Warunki brzegowe
-
-   - **Górny brzeg obszaru symulacji** --- warunek Dirichleta $c(0,t)=0$
-   - **Dolny brzeg obszaru symulacji** --- warunek Dirichleta $c(L,t)=0$
+1. Warunki brzegowe (Dirichleta)
+$c(0,t)=0$, $c(1,t)=0$, $c(L,t)=0$
 
     Znacznik nie dociera do dolnego brzegu symulowanego obszaru,
       ale nie możemy z góry założyć, że warunek będzie spełniony dla wybranego $L$. 
@@ -333,3 +331,5 @@ Oceń zbieżność rozwiązania oraz wpływ zagęszczania siatki na dokładnoś�
 
 
 [//]: # (- Inkrementy opisane rozkładem stabilnym &#40;prowadzi do 1D fractional ADE&#41;.)
+
+
