@@ -14,6 +14,7 @@ ciepła w środowisku oraz metody numerycznego całkowania równania różniczko
 
 Jednowymiarowe we współrzędnych kartezjańskich: 
 $$\frac{\partial T}{\partial t} = \alpha \left(\frac{\partial^2 T}{\partial z^2} \right),$$
+(1)
 
 gdzie
 
@@ -60,6 +61,7 @@ a po zachodzie Słońca stygnie do temperatury ok. $100 K$.
 Celem ćwiczenia jest zamodelowanie dobowych zmian temperatury regolitu
 na jego powierzchni i poniżej, aż do głębokości, poniżej której nie dociera ciepło z powierzchni. 
 Uwzględniamy dwa procesy:
+
 1. Absorpcja i emisja promieniowania elektromagnetycznego. Gęstość strumienia 
 absorbowanej energii:
 
@@ -67,12 +69,12 @@ absorbowanej energii:
 
 	gdzie $A = 0.12$ to albedo powierzchni Księżyca.
 	Gęstość strumienia emitowanej energii opisuje prawo Stefana-Boltzmanna:
-    $$E=εσT^4,$$							(8)
+    $$E=\varepsilon σT^4,$$							(8)
     gdzie $\varepsilon = 0.85$ jest emisyjnością powierzchni Księżyca. 
 
 2. Przepływ ciepła w regolicie wywołany gradientem temperatury, opisany równaniem (1). 
 
-Modelowanie przeprowadzamy dla przypadku jednowymiarowego – temperatura regolitu
+Modelowanie przeprowadzamy dla przypadku jednowymiarowego --- temperatura regolitu
 w przestrzeni zmienia się jedynie z głębokością $z$. 
 Modelowanie polega na wyznaczaniu w kolejnych krokach czasowych o długości $∆t$ 
 temperatury regolitu $T$ w $N$ węzłach przestrzennych, pokrywających w równomiernych odstępach $∆z$
