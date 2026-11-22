@@ -21,7 +21,7 @@ Define `raw` cell inside your file.
 ---
 format:
   pdf:
-    include-in-header: 
+    include-in-header:
        text: |
          \usepackage{fvextra}
          \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}
@@ -35,13 +35,13 @@ date: last-modified
 ---
 ```
 
-## Add $\LaTeX$ packages 
+## Add $\LaTeX$ packages
 Add something like this in your `raw` cell:
 ```
 ---
 format:
   pdf:
-    include-in-header: 
+    include-in-header:
        text: |
          \usepackage{mhchem}
 ---
@@ -51,7 +51,7 @@ format:
 ---
 format:
   pdf:
-    include-in-header: 
+    include-in-header:
        text: |
          \usepackage{fvextra}
          \DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,commandchars=\\\{\}}

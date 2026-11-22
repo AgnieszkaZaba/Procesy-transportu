@@ -1,21 +1,25 @@
 """Tests prepared for checking some of the requirements for code format
 Classes: Procesy transportu w środowisku"""
 
-import pytest
 import nbformat
+import pytest
 
-PLOT=False
+PLOT = False
+
 
 @pytest.fixture(name="notebook_filename")
 def notebook_filename_fixture():
     """insert you file path here"""
     return "radiation.ipynb"
 
+
 class TestCodeFormat:
     """Tests for cells in jupyter notebooks"""
+
     @staticmethod
     def test_first_cell_is_markdown(notebook_filename):
-        """checks if notebook has a markdown cell in the first position that is not empty"""
+        """checks if notebook has a markdown
+        cell in the first position that is not empty"""
         with open(notebook_filename, encoding="utf8") as file:
             notebook = nbformat.read(file, nbformat.NO_CONVERT)
             assert len(notebook.cells) > 0
@@ -29,10 +33,9 @@ class TestCodeFormat:
         with open(notebook_filename, encoding="utf8") as file:
             notebook = nbformat.read(file, nbformat.NO_CONVERT)
             for cell in notebook.cells:
-                if cell.cell_type == "code" and '#' in cell.source:
-                    raise AssertionError(
-                        f"Comment found in a code cell {cell.source}"
-                    )
+                if cell.cell_type == "code" and "#" in cell.source:
+                    raise AssertionError(f"Comment found in a code cell {cell.source}")
+
     @staticmethod
     def test_no_errors_or_warnings_in_output(notebook_filename):
         """checks if notebook have clear std-err output
@@ -55,7 +58,7 @@ class TestCodeFormat:
                 if cell.cell_type == "code":
                     for output in cell.outputs:
                         if output.output_type == "display_data":
-                            assert 'for' not in cell.source
+                            assert "for" not in cell.source
 
     @staticmethod
     def test_if_plot_present(notebook_filename):

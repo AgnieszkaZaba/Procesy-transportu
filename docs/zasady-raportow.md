@@ -29,8 +29,8 @@ za pomocą kodu oraz że można je odtworzyć).
 
 # Zawartość raportu
 
-1. Imię i nazwisko, nazwę zajęć, numer raportu i datę. 
-2. Tytuł oraz krótki opis celu ćwiczenia: 
+1. Imię i nazwisko, nazwę zajęć, numer raportu i datę.
+2. Tytuł oraz krótki opis celu ćwiczenia:
 Raport powinien zawierać tytuł oraz jedno zdanie określające,
 jakie zagadnienie jest analizowane.
 Przykład:
@@ -44,7 +44,7 @@ Należy zadbać o:
    - odpowiednie nazewnictwo zmiennych;
    - możliwość ponownego uruchomienia symulacji.
 
-4. Ponumerowane i opisane wykresy lub tabele. 
+4. Ponumerowane i opisane wykresy lub tabele.
 Raport powinien zawierać wykresy lub tabele prezentujące wyniki przeprowadzonych symulacji i analiz.
 Każdy wykres powinien:
 
@@ -54,20 +54,20 @@ Każdy wykres powinien:
    - być czytelny i odpowiednio sformatowany;
    - umożliwiać rozróżnienie wyników otrzymanych dla różnych parametrów symulacji.
 
-    Należy stosować grafikę wektorową, 
+    Należy stosować grafikę wektorową,
     która zapewnia dobrą czytelność po powiększeniu i podczas drukowania.
     Jeżeli przedstawiane są analogiczne wykresy dla
     różnych parametrów, np. liczby kroków, mnożnika
     lub czasu symulacji, różnice muszą być jednoznacznie
     zaznaczone na wykresie albo w jego opisie.
-    
+
     Przykład:
-    
+
     ```python
     plt.title(f"Ruch Browna dla N={N} cząstek")
     ```
 
-    Każdy wykres powinien być uzupełniony jednym zdaniem opisu 
+    Każdy wykres powinien być uzupełniony jednym zdaniem opisu
     lub komentarza, zawierającym odniesienie do jego numeru.
 
 5. Wnioski w maksymalnie jednym akapicie.

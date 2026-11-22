@@ -37,6 +37,7 @@ jobs:
         run: |
           quarto render "$NOTEBOOKS_DIR" \
           --to "$RENDER_FORMAT" \
+          --execute
           --output-dir "$OUTPUT_DIR"
 
       - name: Upload generated files
