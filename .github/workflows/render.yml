@@ -1,4 +1,4 @@
-name: Execute Jupyter Notebook and Generate PDF
+name: Execute and render Examples
 
 on:
   push:
@@ -30,6 +30,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install .
           pip install jupyter
 
       - name: Render notebooks
