@@ -14,5 +14,8 @@ dependencies = [
     "scipy",
     "pint",
     "open-atmos-jupyter-utils",
-    "matplotlib"
+    "matplotlib",
+    "numba",
+    "csv",
+    "pandas",
 ]
