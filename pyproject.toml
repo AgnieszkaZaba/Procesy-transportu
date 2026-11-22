@@ -16,6 +16,5 @@ dependencies = [
     "open-atmos-jupyter-utils",
     "matplotlib",
     "numba",
-    "csv",
     "pandas",
 ]
