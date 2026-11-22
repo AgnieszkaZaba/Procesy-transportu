@@ -3,8 +3,6 @@ title: "Modelowanie Procesów Transportu w Środowisku"
 subtitle: "Ćwiczenia laboratoryjne"
 lang: pl
 format: pdf
-keep-tex: true
-
 ---
 
 # Ćwiczenie 1. Od błądzenia przypadkowego do transportu zanieczyszczeń w środowisku
