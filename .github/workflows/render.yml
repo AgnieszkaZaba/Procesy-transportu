@@ -1,0 +1,45 @@
+name: Execute Jupyter Notebook and Generate PDF
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  NOTEBOOKS_DIR: examples
+  OUTPUT_DIR: _site
+  RENDER_FORMAT: html,pdf
+
+jobs:
+  quarto-render:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          tinytex: true
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install jupyter
+
+      - name: Render notebooks
+        run: |
+          quarto render "$NOTEBOOKS_DIR" \
+          --to "$RENDER_FORMAT" \
+          --output-dir "$OUTPUT_DIR"
+
+      - name: Upload generated files
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-notebooks
+          path: ${{ env.OUTPUT_DIR }}
