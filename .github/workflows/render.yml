@@ -24,14 +24,24 @@ jobs:
           cache-dependency-path: pyproject.toml
 
       - uses: quarto-dev/quarto-actions/setup@v2
+
+      - name: Cache TinyTeX
+        id: cache-tinytex
+        uses: actions/cache@v4
         with:
-          tinytex: true
+          path: ~/.TinyTeX
+          key: tinytex-${{ runner.os }}
+
+      - name: Install TinyTeX
+        if: steps.cache-tinytex.outputs.cache-hit != 'true'
+        run: quarto install tinytex
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install .
-          pip install jupyter
+          python -m pip install .
+          sudo apt-get update
+          sudo apt-get install -y librsvg2-bin
 
       - name: Render notebooks
         run: |
