@@ -3,8 +3,6 @@ title: "Modelowanie Procesów Transportu w Środowisku"
 subtitle: "Ćwiczenia laboratoryjne"
 lang: pl
 format: pdf
-keep-tex: true
-
 ---
 
 # Ćwiczenie 1. Od błądzenia przypadkowego do transportu zanieczyszczeń w środowisku
@@ -177,14 +175,14 @@ $$
 ---
 
 # Ćwiczenie 3. Analiza wyników testu znacznikowego w rzece
-Do rzeki wlano wodny roztwór $m = 10$ kg KBr. 
-  Próbki wody pobierano z rzeki w odległości $x = 2000 m$ poniżej miejsca iniekcji 
+Do rzeki wlano wodny roztwór $m = 10$ kg KBr.
+  Próbki wody pobierano z rzeki w odległości $x = 2000 m$ poniżej miejsca iniekcji
 (wprowadzenia) znacznika.
 Załączone dane przedstawiają stężenia znacznika (jonu Br-) $C_i$ dla kolejnych próbek
   wody pobranych w chwilach $t_i$.
 
-### Zadanie: wykreślenie krzywej przejścia 
-Należy narysować krzywą przejścia znacznika (BTC -- breakthrough curve), 
+### Zadanie: wykreślenie krzywej przejścia
+Należy narysować krzywą przejścia znacznika (BTC -- breakthrough curve),
   czyli zależność $C_i = C(t_i)$, a następnie wyliczyć momenty tej krzywej, $M_k$, dla $k=0, 1, 2$.
 Do całkowania określonej dyskretnie funkcji $C(t_i)$ zastosować metodę trapezów.
 
@@ -207,8 +205,8 @@ $$
 $$\sigma_t^2=\frac{M_2}{M_0}-\left(\frac{M_1}{M_0}\right)^2$$
 
 ### Zadanie: określenie wpływu niepewności analitycznych na niepewność charakterystyk krzywej przejścia
-Stężenia jonu bromkowego określono ze względną niepewnością 5%. 
-Celem tej części ćwiczenia jest sprawdzenie, 
+Stężenia jonu bromkowego określono ze względną niepewnością 5%.
+Celem tej części ćwiczenia jest sprawdzenie,
  jak te niepewności propagują się do charakterystyk wyznaczonych w poprzedniej części.
 Stosujemy do tego metodę Monte Carlo, generując $$N=10^4$$ krzywych przejścia:
 
@@ -216,24 +214,24 @@ $$
 C_i^j \sim \mathcal{N}\left(C_i,(0{,}05C_i)^2\right).
 $$
 
-Dla każdej z $N$ otrzymanych w ten sposób krzywych przejścia wyznaczamy $Q$, 
-  $\bar{t}$, $\sigma_t^2$, 
-  a następnie dla otrzymanych rozkładów tych wielkości wyznaczamy 
+Dla każdej z $N$ otrzymanych w ten sposób krzywych przejścia wyznaczamy $Q$,
+  $\bar{t}$, $\sigma_t^2$,
+  a następnie dla otrzymanych rozkładów tych wielkości wyznaczamy
 wartości średnie i odchylenia standardowe, np. dla $Q$:
 
 **Wartość średnia:** $\mu_Q=\frac{1}{N}\sum_{j=1}^{N}Q^j$
 
-**Odchylenie standardowe:** 
+**Odchylenie standardowe:**
 $s_Q=\sqrt{\frac{1}{N-1}\sum_{j=1}^{N}(Q^j-\mu_Q)^2}$
 
 ---
 
 # Ćwiczenie 4. Modelowanie transportu zanieczyszczenia w rzece (Crank–Nicholson lub QUICKEST)
 Celem ćwiczenia jest numeryczne modelowanie transportu znacznika w rzece z
-  wykorzystaniem równania adwekcyjno-dyspersyjnego. 
-Student powinien umieć zaimplementować wybraną metodę numeryczną, 
+  wykorzystaniem równania adwekcyjno-dyspersyjnego.
+Student powinien umieć zaimplementować wybraną metodę numeryczną,
   ocenić wpływ dyskretyzacji na otrzymane rozwiązanie oraz porównać wyniki symulacji
-  z danymi pomiarowymi. 
+  z danymi pomiarowymi.
 
 ### Równanie adwekcyjno-dyspersyjne (RAD)
 
@@ -250,10 +248,10 @@ gdzie:
 $c(0,t)=0$, $c(1,t)=0$, $c(L,t)=0$
 
     Znacznik nie dociera do dolnego brzegu symulowanego obszaru,
-      ale nie możemy z góry założyć, że warunek będzie spełniony dla wybranego $L$. 
-    Stosujemy więc zabieg polegający na ustawieniu dolnego brzegu na tyle daleko, 
+      ale nie możemy z góry założyć, że warunek będzie spełniony dla wybranego $L$.
+    Stosujemy więc zabieg polegający na ustawieniu dolnego brzegu na tyle daleko,
       że zanieczyszczenie nie osiągnie go w trakcie trwania symulacji.
-    Wielkość $L$ ustalamy więc dynamicznie, chociaż może się zdarzyć, 
+    Wielkość $L$ ustalamy więc dynamicznie, chociaż może się zdarzyć,
      że wybrana początkowo wartość będzie odpowiednio duża i nie zajdzie
      potrzeba rozszerzania obszaru symulacji.
 
@@ -326,10 +324,8 @@ Wykonaj symulacje metodą QUICKEST dla kolejno zagęszczanych siatek przestrzenn
 np. $\Delta x \in \{20, 10, 5, 2{,}5\}\ \mathrm{m}$,
 odpowiednio dobierając krok czasowy $\Delta t$ i kontrolując stabilność numeryczną.
 Porównaj otrzymane krzywe przejścia znacznika, oblicz błędy RMSE względem rozwiązania
-na najgęstszej siatce i przedstaw zależność błędu od $\Delta x$. 
+na najgęstszej siatce i przedstaw zależność błędu od $\Delta x$.
 Oceń zbieżność rozwiązania oraz wpływ zagęszczania siatki na dokładność i koszt obliczeń.
 
 
 [//]: # (- Inkrementy opisane rozkładem stabilnym &#40;prowadzi do 1D fractional ADE&#41;.)
-
-

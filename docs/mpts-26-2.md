@@ -12,7 +12,7 @@ ciepła w środowisku oraz metody numerycznego całkowania równania różniczko
 
 ## Równanie transportu ciepła
 
-Jednowymiarowe we współrzędnych kartezjańskich: 
+Jednowymiarowe we współrzędnych kartezjańskich:
 $$\frac{\partial T}{\partial t} = \alpha \left(\frac{\partial^2 T}{\partial z^2} \right),$$
 (1)
 
@@ -38,31 +38,31 @@ $$T_i^{n+1}=T_i^n + \alpha  \frac{∆t}{(∆z)^2}  (T_{i+1}^n-2T_i^n+T_{i-1}^n )
 Regolit to warstwa luźnego, nieskonsolidowanego materiału na powierzchni ciała
 niebieskiego pokrywająca lite podłoże skalne.
 Na Księżycu tworzy go głównie drobny pył i pokruszone skały powstałe wskutek
-miliardów lat bombardowania meteoroidami. 
+miliardów lat bombardowania meteoroidami.
 
-Grubość regolitu księżycowego wynosi od kilku do kilkunastu metrów, 
+Grubość regolitu księżycowego wynosi od kilku do kilkunastu metrów,
 nie zawiera materii organicznej ani wody.
 
 
 
 ### Fizyka procesu, warunki brzegowe i początkowe, parametry modelu
-Jedynym źródłem ciepła na powierzchni Księżyca jest promieniowanie Słońca.  
+Jedynym źródłem ciepła na powierzchni Księżyca jest promieniowanie Słońca.
 Zmienność irradiancji słonecznej na księżycowym równiku $I(t) [Wm^{-2}]$ opisuje wzór:
 
 $$I(t)=S_0 max[0,\cos(2πt/T)],$$					(6)
 
-gdzie 
-$S0 = 1361 [Wm^{-2}]$, 
-$T = 29.53 d$. 
+gdzie
+$S0 = 1361 [Wm^{-2}]$,
+$T = 29.53 d$.
 
-W ciągu księżycowego dnia powierzchnia regolitu intensywnie się nagrzewa, 
-a po zachodzie Słońca stygnie do temperatury ok. $100 K$. 
+W ciągu księżycowego dnia powierzchnia regolitu intensywnie się nagrzewa,
+a po zachodzie Słońca stygnie do temperatury ok. $100 K$.
 
 Celem ćwiczenia jest zamodelowanie dobowych zmian temperatury regolitu
-na jego powierzchni i poniżej, aż do głębokości, poniżej której nie dociera ciepło z powierzchni. 
+na jego powierzchni i poniżej, aż do głębokości, poniżej której nie dociera ciepło z powierzchni.
 Uwzględniamy dwa procesy:
 
-1. Absorpcja i emisja promieniowania elektromagnetycznego. Gęstość strumienia 
+1. Absorpcja i emisja promieniowania elektromagnetycznego. Gęstość strumienia
 absorbowanej energii:
 
     $$I_{abs} (t)=(1-A)I(t), 	$$					(7)
@@ -70,29 +70,29 @@ absorbowanej energii:
 	gdzie $A = 0.12$ to albedo powierzchni Księżyca.
 	Gęstość strumienia emitowanej energii opisuje prawo Stefana-Boltzmanna:
     $$E=\varepsilon σT^4,$$							(8)
-    gdzie $\varepsilon = 0.85$ jest emisyjnością powierzchni Księżyca. 
+    gdzie $\varepsilon = 0.85$ jest emisyjnością powierzchni Księżyca.
 
-2. Przepływ ciepła w regolicie wywołany gradientem temperatury, opisany równaniem (1). 
+2. Przepływ ciepła w regolicie wywołany gradientem temperatury, opisany równaniem (1).
 
 Modelowanie przeprowadzamy dla przypadku jednowymiarowego --- temperatura regolitu
-w przestrzeni zmienia się jedynie z głębokością $z$. 
-Modelowanie polega na wyznaczaniu w kolejnych krokach czasowych o długości $∆t$ 
+w przestrzeni zmienia się jedynie z głębokością $z$.
+Modelowanie polega na wyznaczaniu w kolejnych krokach czasowych o długości $∆t$
 temperatury regolitu $T$ w $N$ węzłach przestrzennych, pokrywających w równomiernych odstępach $∆z$
-głębokość $H$, wykorzystując wzór (5). 
+głębokość $H$, wykorzystując wzór (5).
 
-Pierwszy węzeł siatki przestrzennej, wypadający na powierzchni regolitu traktujemy specjalnie. 
+Pierwszy węzeł siatki przestrzennej, wypadający na powierzchni regolitu traktujemy specjalnie.
 Stosujemy dla niego równanie bilansu energii:
 
 $$I_{abs} (t)= εσT_0^4-k \frac{T_1-T_0}{∆z}.$$				(9)
 
-Rozwiązując równanie (9) dostajemy dla każdego kroku czasowego T0, 
-czyli górny warunek brzegowy typu Dirichleta. 
-Silnie nieliniowe równanie (9) rozwiązujemy po uporządkowaniu go 
+Rozwiązując równanie (9) dostajemy dla każdego kroku czasowego T0,
+czyli górny warunek brzegowy typu Dirichleta.
+Silnie nieliniowe równanie (9) rozwiązujemy po uporządkowaniu go
 (przeniesieniu wyrazów z $T_0$ na jedną stronę) metodą Newtona-Raphsona.
 
-Dolnego warunku brzegowego nie określamy wprost. Modelowaniem obejmujemy węzły, 
-poniżej których zmiana $T$ pomiędzy sąsiednimi węzłami jest mniejsza (w danym kroku czasowym) 
-od założonego progu (np. $0.01 K$). 
+Dolnego warunku brzegowego nie określamy wprost. Modelowaniem obejmujemy węzły,
+poniżej których zmiana $T$ pomiędzy sąsiednimi węzłami jest mniejsza (w danym kroku czasowym)
+od założonego progu (np. $0.01 K$).
 Warunek początkowy określamy jako $T_i = 100 K$ dla każdego $i$.
 
 
@@ -102,4 +102,4 @@ Warunek początkowy określamy jako $T_i = 100 K$ dla każdego $i$.
 
 2.	Wyznaczenie głębokości, na której zanikają fluktuacje temperatury. Zrobienie wykresów porównawczych fluktuacji dla różnych głębokości.
 
-3.	Wprowadzenie zmiennego przewodnictwa ciepła dla regolitu z głębokością (ze względu na różną ziarnistość). 
+3.	Wprowadzenie zmiennego przewodnictwa ciepła dla regolitu z głębokością (ze względu na różną ziarnistość).

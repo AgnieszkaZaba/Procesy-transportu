@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agh-mpts"
+version = "0.1.0"
+requires-python = ">=3.11"
+
+dependencies = [
+    "nbclient",
+    "jupyter",
+    "ipykernel",
+    "pyyaml",
+    "scipy",
+    "pint",
+    "open-atmos-jupyter-utils",
+    "matplotlib",
+    "numba",
+    "pandas",
+    "sympy",
+]
+
+[tool.setuptools]
+packages = []
