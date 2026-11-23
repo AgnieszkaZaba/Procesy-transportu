@@ -6,6 +6,8 @@ poniedziałki
 - 8:00 - 10:15 --- gr. 2; s. 30b, D10 
 - 12:15 - 14:30 --- gr. 1; s. 206, D10
 
+konsultacje: środy 13:15-14:15 (proszę o wcześniejszą informację)
+
 ## Wymagania
 Projekt ma być ciekawy i nie musi być bardzo skomplikowany.
 Projekt jest rozszerzeniem jednego z zagadnień omawiany w trakcie semestru na zajęciach laboratoryjny. 
